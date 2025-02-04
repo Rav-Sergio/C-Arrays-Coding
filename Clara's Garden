@@ -1,0 +1,106 @@
+#include <iostream>
+#include <string>
+
+void main()
+
+{
+
+	int Produtos[5][12], i, a, Valor, repetir = 0, Qprodutos = 0;
+
+	std::string produtos[5] = { "Batatas", "Cenouras", "Couves", "Alface", "Brocolos" };
+	std::string messes[12] = { "Janeiro", "Fevereiro", "Marco", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro" };
+
+	for (i = 0; i < 12; i++)
+	{
+		for (a = 0; a < 5; a++)
+		{
+			std::cout << "Escreve a quantidade de " << produtos[a] << " que vendeste no mes " << messes[i] << ".\n";
+			std::cin >> Produtos[a][i];
+
+		}
+	}
+
+	do
+
+	{
+
+		std::cout << "---MENU---\n";
+
+		std::cout << "Escreve 0 se queres sair.\n";
+
+		std::cout << "Escreve 1 se queres saber todos os produtos gastos em cada mes.\n";
+
+		std::cout << "Escreve 2 se queres saber todos os gastos de cada produto no ano.\n";
+
+		std::cout << "Escreve 3 se queres rescrever novamente os produtos vendidos.\n";
+
+		std::cin >> Valor;
+
+		switch (Valor)
+		{
+		case (0):
+		{
+			repetir = 0;
+			break;
+
+		}
+		case (1):
+		{
+			for (i = 0; i < 12; i++)
+			{
+
+				Qprodutos = 0;
+
+				for (a = 0; a < 5; a++)
+				{
+					Qprodutos = Qprodutos + Produtos[a][i];
+
+				}
+				std::cout << "O total de produtos gastos foi " << Qprodutos << " no mes de  " << messes[i] << ".\n";
+			
+			}
+			break;
+
+		}
+		case (2):
+		{
+			for (a = 0; a < 5; a++)
+			{
+
+				Qprodutos = 0;
+
+				for (i = 0; i < 12; i++)
+				{
+					Qprodutos = Qprodutos+ Produtos[a][i];
+
+				}
+				std::cout << "O total de " << produtos[a] << " gasto durante o ano foi " << Qprodutos << ".\n";
+
+			}
+			break;
+
+		}
+		case (3):
+		{
+			for (i = 0; i < 12; i++)
+			{
+				for (a = 0; a < 5; a++)
+				{
+					std::cout << "Diz a quantidade de " << produtos[a] << " no mes de " << messes[i] << ".\n";
+					std::cin >> Produtos[5][12];
+
+				}
+			}
+
+		}
+		default:
+		{
+			std::cout << "Esse valor nao existe!\n";
+
+		}
+		}
+
+
+	} while (repetir != 0);
+
+}
