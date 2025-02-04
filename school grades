@@ -1,0 +1,81 @@
+#include <iostream>
+#include <string>
+
+void main()
+
+{
+
+    int turma[10][10], i, a, totalnota, mediaaluno, mediadisciplina[10], maiornota = 0, certa[2];
+
+    std::string nomes[10] = { "Belga", "Ruben", "Kelson", "Clara", "Gabriel", "Sirius", "Martim", "Santiago", "Salvador", "Lucas" };
+
+    std::string disciplinas[10] = { "Portugues", "A.C.S", "Ingles", "Matematica", "TLP", "Fisica", "Quimica", "EDF", "Filosofia", "Geometria" };
+    
+    for (i = 0; i < 10; i++)
+    {
+
+        for (a = 0; a < 10; a++)
+        {
+            std::cout << "Digite a nota do aluno " << nomes[i] << " na disciplina " << disciplinas[a] << ".\n";
+            std::cin >> turma[i][a];
+
+            if (turma[i][a] < 0 || turma[i][a] > 20)
+            {
+                std::cout << "Nota invalida apenas existe notas entre 0 a 20.\n";
+
+            }
+
+        } while (turma[i][a] < 0 || turma[i][a] > 20);
+        
+    }
+
+    std::cout << "Notas que tens.\n";
+
+    for (i = 0; i < 10; i++)
+    {
+        totalnota = 0;
+
+        for (a = 0; a < 10; a++)
+        {
+
+            totalnota += turma[i][a];
+
+        }
+
+        mediaaluno = totalnota / 10;
+
+        std::cout << "Media do Aluno " << nomes[i] << ", " << mediaaluno << ".\n";
+
+    }
+
+    for (a = 0; a < 10; a++)
+    {
+        totalnota = 0;
+
+        for (i = 0; i < 10; i++)
+        {
+            totalnota += turma[i][a];
+
+        }
+
+        mediadisciplina[a] = totalnota / 10;
+
+        std::cout << "Media da Disciplina " << nomes[a]<< ", " << mediadisciplina[a] << ".\n";
+
+    }
+    
+    for (i = 0; i < 10; i++)
+    {
+        for (a = 0; a < 10; a++)
+        {
+            if (maiornota < turma[i][a])
+            {
+                maiornota = turma[i][a];
+                certa[0] = i;
+                certa[1] = a;
+            }
+        }
+    }
+
+    std::cout << "A maior nota foi " << maiornota << " na disciplina de " << disciplinas[certa[1]] << " do aluno " << nomes[certa[0]] <<  ".\n";
+}
