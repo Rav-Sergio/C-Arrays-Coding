@@ -1,0 +1,65 @@
+#include<iostream>
+
+void main() 
+
+{
+
+    int n = 0, i, jogador[24], contador = 0, box, troca = 0;
+  
+    for (i = 0; i < 24; i++)
+    {
+        jogador[i] = 0;
+
+    }
+
+    do
+    {
+        do
+        {
+          
+            std::cout << "Diz o numero do jogador em que vais votar";
+            std::cin >> n;
+
+            if (n < 0 || n > 23) 
+            {
+                std::cout << "Stooop! Apenas existe 23 jogadores escreve entre 1 a 23.\n";
+        
+            }
+        } while (n < 0 || n > 23);
+        
+        if (n != 0)
+        {
+            jogador[n] = jogador[n] + 1;
+            contador = contador + 1;
+
+        }
+    } while (n != 0);
+
+    std::cout << "o total de votos foi " << contador << ".\n";
+
+        for (i = 0; i < 24; i++)
+        {
+        if (jogador[i] != 0)
+        {
+            std::cout << "O jogador com a camisola numero " << i << " teve " << jogador[i] << " votos, pelo que a percentagem foi de " << jogador[i] * 100 / contador << " %\n";
+
+        }
+        }
+
+        do
+        {
+            troca = 0;
+
+            for (i = 1; i <= 22; i++) 
+            {
+                if (jogador[i] > jogador[i + 1])
+                {
+                    troca = troca + 1;
+                    box = jogador[i];
+                    jogador[i] = jogador[i + 1];
+                    jogador[i + 1] = box;
+                }
+            }
+
+        } while (troca != 0);
+}
