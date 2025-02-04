@@ -1,0 +1,54 @@
+#include <iostream>
+
+void main() {
+
+    int i, a, numeros[4], n, contador = 0, acertou = 0;
+
+    srand(time(0));
+
+    for (i = 0; i < 4; i++)
+    {
+        numeros[i] = rand() % 2;
+
+    }
+
+    for (i = 0; i < 4; i++)
+    {
+        std::cout << numeros[i] << ", ";
+
+    }
+
+    std::cout << "Éstas a participar num MasterMind!!!";
+
+    do
+
+    {
+        acertou = 0;
+
+        for (a = 0; a < 4; a++)
+        {
+
+            std::cout << "escreve um numero 0 ou 1";
+            std::cin >> n;
+
+            if ((n != 0) && (n != 1))
+
+            {
+                std::cout << "PARVO! Número deve ser 0 ou 1!";
+
+            }
+
+            if (n == numeros[a]) { acertou = acertou + 1; }
+
+        }
+
+        std::cout << "\n acertaste" << acertou;
+
+        contador = contador + 1;
+
+    } while (acertou < 4);
+
+    std::cout << "Você acertou ao fim de " << contador << " vezes!" << std::endl;
+
+
+}
